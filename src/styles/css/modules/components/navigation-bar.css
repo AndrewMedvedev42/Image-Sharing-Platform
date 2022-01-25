@@ -1,0 +1,7 @@
+@charset "UTF-8";
+.navigation-bar {
+  border: 5px blue solid; }
+  .navigation-bar .container {
+    border: 5px red solid; }
+    .navigation-bar .container .nav-container {
+      border: 5px green solidж; }
