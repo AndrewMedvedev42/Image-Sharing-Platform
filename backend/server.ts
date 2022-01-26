@@ -3,7 +3,7 @@ const port = process.env.PORT || 8000
 const express = require('express')
 const app = express()
 const connectToDataBase = require('./db/connect.tsx')
-// const router = require('./routes/routes')
+const router = require('./routes/routes')
 app.use(express.json())
 const server = app.listen(port, () => {
     console.log("Listening on port: " + port);
