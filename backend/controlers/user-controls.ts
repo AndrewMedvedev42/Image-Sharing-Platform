@@ -1,4 +1,4 @@
-const UserModel = require("../models/user")
+const User = require("../models/user")
 //GETS ALL USERS FROM DATA BASE
 // const getAllUsers = async(req,res) => {
 //     const users = User.find({})
