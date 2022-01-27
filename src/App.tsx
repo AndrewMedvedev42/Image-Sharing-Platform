@@ -1,11 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import { NavigationBar } from "./modules/componets/navigation-menu";
+
 import { HomePage } from "./modules/home";
 import { LoginInPage } from "./modules/login";
 import { SignUpPage } from "./modules/signup";
 import { UserProfilePage } from "./modules/user-profile";
 import { SubmitImagePage } from "./modules/submit-image";
 import { ImagePreviewPage } from "./modules/image-preview";
+
 function App() {
   return (
     <Router>
