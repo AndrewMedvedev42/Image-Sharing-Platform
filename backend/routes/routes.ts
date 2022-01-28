@@ -17,12 +17,13 @@ const storage = multer.diskStorage({
 
 //CONTROLERS
 const {getAllImages, addImage, updateImage, removeImage } = require("../controlers/image-controls")
-const {getUser, getUserByEmail, createUser, updateUser, deleteUser} = require("../controlers/user-controls")
+const {getUserByUserName, getUser, getUserByEmail, createUser, updateUser, deleteUser} = require("../controlers/user-controls")
 
 
 // REQUEST ROUTES
 router.route('/login_register').get(getUserByEmail).post(createUser)
-router.route('/users').get(getUser).patch(updateUser).delete(deleteUser)
+router.route('/users/:id').get(getUser).patch(updateUser).delete(deleteUser)
+router.route('/users/get-by-username/:id').get(getUserByUserName)
 router.route('/images').get(getAllImages).post(addImage, upload.single('image'))
 router.route('/images/:image-id').patch(updateImage).delete(removeImage)
 

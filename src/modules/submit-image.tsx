@@ -3,13 +3,12 @@ export const SubmitImagePage = () => {
         console.log(e.target.value);
     }
     return (
-        <section>
-            <form style={{marginTop:100}} action="/images" encType="multipart/form-data" method="post">
-                <div className="form-group">
-                    <input type="file" className="form-control-file" name="uploaded_file"/>
-                    <input type="text" className="form-control" placeholder="Number of speakers" name="nspeakers"/>
-                    <input type="submit" value="Get me the stats!" className="btn btn-default"/>            
-                </div>
+        <section className="page-container submit-image-page-container">
+            <form className="submit-image-form">
+                    <input type="file" className="form-control"name="uploaded_file"/>
+                    <input type="text" className="form-control" placeholder="Title"/>
+                    <input type="text" className="form-control" placeholder="Description"/>
+                    <input type="submit" value="Submit" className="btn btn-default" disabled/>            
             </form>
         </section>
     )

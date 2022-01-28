@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { NavigationBar } from "./modules/componets/navigation-menu";
 
-import { HomePage } from "./modules/home";
+import { MainPage } from "./modules/main page/main";
 import { LoginInPage } from "./modules/login";
 import { SignUpPage } from "./modules/signup";
 import { UserProfilePage } from "./modules/user-profile";
@@ -14,12 +14,12 @@ function App() {
     <Router>
     <NavigationBar/>
       <Routes>
-        <Route path="/" element={<HomePage/>}></Route>
+        <Route path="/" element={<MainPage/>}></Route>
         <Route path="/login" element={<LoginInPage/>}></Route>
         <Route path="/signup" element={<SignUpPage/>}></Route>
-        <Route path="/users/:username" element={<UserProfilePage/>}></Route>
-        <Route path="/users/:username/submit-image" element={<SubmitImagePage/>}></Route>
-        <Route path="/images/:id" element={<ImagePreviewPage/>}></Route>
+        <Route path="/users/:id" element={<UserProfilePage/>}></Route>
+        <Route path="/users/:id/submit-image" element={<SubmitImagePage/>}></Route>
+        <Route path="/images/:username/:id" element={<ImagePreviewPage/>}></Route>
       </Routes>
   </Router>
   );

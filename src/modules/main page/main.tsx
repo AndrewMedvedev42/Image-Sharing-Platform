@@ -13,7 +13,7 @@ interface ImageProps {
   }
   
 
-export const HomePage:React.FC = () => {
+export const MainPage:React.FC = () => {
 
     const [imageList, setImageList] = useState([])
 
@@ -26,16 +26,18 @@ export const HomePage:React.FC = () => {
     
 
     return (
-        <section>
-            <section>
+        <section className="page-container main-page-container">
+            <section className="image-list">
                 {
                     imageList.length && (
                         imageList.map(item=>{
-                            const {author, dateOfCreation, title, _id}:ImageProps = item
-                            return <article>
-                                        <img src="#"/>
-                                        <h3>{title}</h3>
-                                        <span>{author.userName}</span>
+                            const {author, title, _id}:ImageProps = item
+                            return <article className="image-item">
+                                        <a href={`/images/${author.userName}/${_id}`}>
+                                            <img src="#"/>
+                                            <h3>{title}</h3>
+                                            <span>{author.userName}</span>
+                                        </a>
                                     </article>
                         })
                     )

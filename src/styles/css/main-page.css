@@ -1,0 +1,5 @@
+.main-page-container .image-list {
+  border: green 5px solid;
+  padding-top: 5rem; }
+  .main-page-container .image-list .image-item {
+    border: red 5px solid; }

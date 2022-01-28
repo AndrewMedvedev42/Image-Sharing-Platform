@@ -1,4 +1,4 @@
-const User = require("../models/user")
+const UserModel = require("../models/user.model")
 //GETS ALL USERS FROM DATA BASE
 // const getAllUsers = async(req,res) => {
 //     const users = User.find({})
@@ -14,7 +14,7 @@ const User = require("../models/user")
 //POSTS NEW USER INTO DATA BASE
 const createUser = async(req,res) => {
     try {
-        const user = await User.create(req.body)
+        const user = await UserModel.create(req.body)
         res.status(201).json({user})
     } catch (error) {
         res.status(500).json({msg:error})
@@ -23,9 +23,28 @@ const createUser = async(req,res) => {
 
 //GETS USER FROM DATA BASE
 const getUser = async(req,res) => {
+    console.log(req.params);
+    
     try {
-        const {id:taskID} = req.params
-        const user = await User.findOne({_id:taskID})
+        const {id:Id} = req.params
+
+        const user = await UserModel.findOne({_id:Id})
+        if(!user){
+            return res.status(404).json({msg:'NO user WAS FOUND'})
+        }
+        res.status(200).json({user})
+    } catch (error) {
+        res.status(500).json({msg:error})
+    }
+}
+
+const getUserByUserName = async(req,res) => {
+    console.log(req.params);
+    
+    try {
+        const {id:Id} = req.params
+
+        const user = await UserModel.findOne({userName:Id})
         if(!user){
             return res.status(404).json({msg:'NO user WAS FOUND'})
         }
@@ -38,8 +57,10 @@ const getUser = async(req,res) => {
 //GETS USER FROM DATA BASE BY EMAIL
 const getUserByEmail = async(req,res) => {
     try {
+        console.log(req.query);
+        
         const {email} = req.query
-        const user = await User.findOne({email:email})
+        const user = await UserModel.findOne({email:email})
         if(!user){
             return res.status(404).json({msg:'NO user WAS FOUND'})
         }
@@ -53,7 +74,7 @@ const getUserByEmail = async(req,res) => {
 const updateUser = async(req,res) => {
     try {
         const {id:taskID} = req.params
-        const todo = await User.findOneAndUpdate({_id:taskID},req.body,{
+        const todo = await UserModel.findOneAndUpdate({_id:taskID},req.body,{
             new:true,
             runValidators:true
         })
@@ -70,7 +91,7 @@ const updateUser = async(req,res) => {
 const deleteUser = async(req,res) => {
     try {
         const {id:taskID} = req.params
-        const user = await User.findOneAndDelete({_id:taskID})
+        const user = await UserModel.findOneAndDelete({_id:taskID})
         if(!user){
             return res.status(404).json({msg:'NO user WAS FOUND'})
         }
@@ -82,6 +103,7 @@ const deleteUser = async(req,res) => {
 
 //EXPORT OF CONTROLERS
 module.exports = {
+    getUserByUserName,
     createUser,
     getUser,
     getUserByEmail,
