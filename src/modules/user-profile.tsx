@@ -2,12 +2,20 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import { useEffect, useState } from "react"
 import {useLocation} from "react-router-dom"
+import parse from "html-react-parser";
 
-type ImageList = {
-    author: any
-    description: string
-    dateOfCreation: string
- }
+interface ImageProps {
+    author: {
+        firstName:String,
+        lastName:String,
+        userName:String
+    },
+    image:string,
+    description:String,
+    dateOfCreation:String,
+    title:String,
+    _id:String
+  }
 
 export const UserProfilePage = () => {
     const [userData, setUserData] = useState();
@@ -33,6 +41,23 @@ export const UserProfilePage = () => {
     },[pathID])
 
 console.log(userData);
+
+    const returnImageList = (image_list:any) => {
+        return image_list.map((item:any)=>{
+            const {author, title, _id, image, description}:ImageProps = item
+            return (
+                <article className="image-item">
+                    <a href={`/images/${author.userName}/${_id}`}>
+                        {image && (parse(image))}
+                        <h3>{title}</h3>
+                        <p>{description}</p>
+                        <span>{author.userName}</span>
+                    </a>
+                </article>
+            )
+        })
+    }
+
     return (
         <section className="page-container user-page-container">
             {
@@ -55,6 +80,7 @@ console.log(userData);
                         }
                     </section>
                     <section>
+                        {returnImageList(userData["imageList"])}
                     </section>
                     </>
                 )

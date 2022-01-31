@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { AiTwotoneHome } from "react-icons/ai";
 import {Link} from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -25,10 +26,11 @@ export const NavigationBar:React.FC = () => {
     },[])
 
     return (
-        <Navbar bg="light" expand="lg" fixed="top" className="navigation-bar">
+        <Navbar expand="lg" fixed="top" className="navigation-bar">
             <Container className="container">
-            <Navbar.Brand href="/">
-                <img src="#" alt="logo" />
+            <Navbar.Brand className="logo-container" href="/">
+                <img src={`${process.env.PUBLIC_URL}/media/Kvazar-logo.svg`} alt="kvazar-logo"/>
+                <span className="website-name">Kvazar</span>
             </Navbar.Brand>
                 {
                     !isUserLogedIn ? (

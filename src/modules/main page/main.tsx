@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from "react"
+import parse from "html-react-parser";
 
 interface ImageProps {
     author: {
@@ -7,6 +8,8 @@ interface ImageProps {
         lastName:String,
         userName:String
     },
+    image:string,
+    description:String,
     dateOfCreation:String,
     title:String,
     _id:String
@@ -14,7 +17,6 @@ interface ImageProps {
   
 
 export const MainPage:React.FC = () => {
-
     const [imageList, setImageList] = useState([])
 
     useEffect(()=>{
@@ -26,17 +28,20 @@ export const MainPage:React.FC = () => {
     
 
     return (
-        <section className="page-container main-page-container">
+        <section className="main-page-container">
             <section className="image-list">
                 {
+                    
                     imageList.length && (
                         imageList.map(item=>{
-                            const {author, title, _id}:ImageProps = item
+                            const {author, title, _id, image}:ImageProps = item
                             return <article className="image-item">
                                         <a href={`/images/${author.userName}/${_id}`}>
-                                            <img src="#"/>
-                                            <h3>{title}</h3>
-                                            <span>{author.userName}</span>
+                                            {image && (parse(image))}
+                                            <article className="image-details">
+                                                <h3 className="image-title">{title}</h3>
+                                                <span className="image-author">{author.userName}</span>
+                                            </article>
                                         </a>
                                     </article>
                         })

@@ -1,7 +1,20 @@
 .navigation-bar{
-    border: 5px blue solid;
+    background-color: white;
+    box-shadow: 0px 0px 7.5px rgba(0, 0, 0, 0.5);
     .container{
-        border: 5px red solid;
+        .logo-container{
+            display: flex;
+            align-items: center;
+            img{
+                width: 40px;
+                margin-right: 1rem;
+            }
+            .website-name{
+                color: #5dd2c7;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: 2rem;
+            }
+        }
         .nav-container{
             border: 5px green solidж
         }

@@ -1,28 +1,30 @@
+export{}
 require("dotenv").config()
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 5000
 const express = require('express')
 const app = express()
-const connectToDataBase = require('./db/connect.tsx')
-const router = require('./routes/routes')
+const fileupload = require("express-fileupload");
+const connectToDataBase = require('./db/connect.ts')
+const router = require('./routes/routes.ts')
+
+app.use(fileupload())
+
 app.use(express.json())
-const server = app.listen(port, () => {
-    console.log("Listening on port: " + port);
-});
-const io = require('socket.io')(server);
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "Origin-Url")
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    res.header("Access-Control-Allow-Methods", "*")
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
     next()
 });
 
+app.use('/api/v1/', router)
+
 const start = async () => {
     try {
-        await connectToDataBase(process.env.CLUSTER_URI)
-        io.on('connection', (socket) => {
-            console.log('a user connected');
-        });
+        await connectToDataBase()
+        app.listen(port, console.log(`Listening port ${port}`))
     } catch (error) {
         console.log(error);
     }
