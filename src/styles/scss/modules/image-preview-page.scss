@@ -1,3 +1,47 @@
 .image-preview-page{
-    padding-top: 5rem;
+    padding-top: 6rem;
+    display: flex;
+    .image-section{
+        width: 70%;
+        margin:1rem;
+        .image-container{
+            display: flex;
+            justify-content: center;
+            height: 500px;
+            padding-bottom: 1rem;
+            img{
+                height: 100%;
+            }
+        }
+        .image-details{
+            padding: 1rem;
+            div{
+                display: flex;
+                align-items: center;
+                .image-title{
+                    font-weight: 700;
+                    font-size: 2rem;
+                }
+                .author-username{
+                    margin-left: 1rem;
+                    opacity: .5;
+                }
+            }
+            .image-description{
+                font-size: 1.25rem;
+            }
+        }
+    }
+    .other-images-section{
+        width: 30%;
+        columns: 2;
+        padding: 1rem;
+        margin-right: 1rem;
+        img{
+            
+            margin-bottom: 1rem;
+            width: 100%;
+            display: inline-block;
+        }
+    }
 }

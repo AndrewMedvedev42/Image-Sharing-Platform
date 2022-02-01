@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { AiTwotoneHome } from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
 import {Link} from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -9,6 +10,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 export const NavigationBar:React.FC = () => {
     const [isUserLogedIn, setIsUserLogedIn] = useState(false)
     const [userId, setUserId] = useState("")
+
+    const navDropdownTitle = (<FaUserAlt size={32}/>);
 
     useEffect(()=>{
         try {
@@ -37,8 +40,7 @@ export const NavigationBar:React.FC = () => {
                         <Nav.Link href="/login">Log in</Nav.Link>
                     ):(
                         <Nav className="nav-container">
-                                <img src="#" alt="user-profile-img" />
-                            <NavDropdown title="" id="basic-nav-dropdown">
+                            <NavDropdown title={navDropdownTitle} id="basic-nav-dropdown">
                                 <NavDropdown.Item href={`/users/${userId}`}>Profile</NavDropdown.Item>
                                 <NavDropdown.Item href="/login">Log out</NavDropdown.Item>
                             </NavDropdown>

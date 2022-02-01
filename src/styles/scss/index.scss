@@ -1,11 +1,8 @@
 body{
     margin:0;
-    // height: 100vh;
-    // border: 5px tomato solid;
 }
 .page-container{
     height: 100vh;
-    border: 5px teal solid;
 }
 
 .user-form{
@@ -23,8 +20,23 @@ input{
 }
 
 input[type=submit]{
+    transition: .5s;
+    color: white;
     padding: 0.5rem 1rem;
-    border:1px solid black;
+    border:none;
     border-radius: 2rem;
     width: 100%;
+    background-color: #5dd2c7;
+}
+
+input[type=submit]:hover{
+    opacity: .75;
+}
+
+.image-item{
+    transition: .5s;
+}
+
+.image-item:hover{
+    opacity: .5;
 }

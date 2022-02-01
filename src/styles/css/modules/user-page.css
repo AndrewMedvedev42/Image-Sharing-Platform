@@ -5,8 +5,12 @@
     display: flex;
     align-items: center;
     flex-direction: column; }
+    .user-page-container .user-details .user-username {
+      font-weight: 900; }
+    .user-page-container .user-details .user-fullname {
+      opacity: .5; }
   .user-page-container .upload-image-section {
-    margin: 1rem 0rem; }
+    margin: 1rem 0rem 2rem; }
     .user-page-container .upload-image-section div {
       width: 300px;
       margin: 0 auto;
@@ -18,3 +22,15 @@
       box-shadow: rgba(0, 0, 0, 0.25) 2.5px 2.5px 10px; }
       .user-page-container .upload-image-section div input {
         margin: 0; }
+  .user-page-container .user-image-list {
+    margin: 1rem;
+    columns: 5; }
+    .user-page-container .user-image-list a {
+      margin-bottom: 1rem;
+      width: 100%;
+      display: inline-block;
+      overflow: hidden;
+      border-radius: 10px;
+      background-color: white; }
+    .user-page-container .user-image-list .image-item {
+      width: 100%; }

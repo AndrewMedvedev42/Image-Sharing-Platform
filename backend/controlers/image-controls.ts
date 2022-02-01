@@ -1,15 +1,5 @@
 const User = require("../models/user")
 const ImageModel = require("../models/image")
-const multer = require('multer')
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './images/')
-    },
-    filename: (req, file, cb) => {
-      cb(null, Date.now() + '-' +file.originalname)
-    }
-  })
-  
 
 const getAllImages = async(req,res) => {
     try {
@@ -42,7 +32,7 @@ const addImage = async(req,res, next) => {
             imageModel.author.firstName = user.firstName
             imageModel.author.lastName = user.lastName
             imageModel.author.userName = user.userName
-            imageModel.image = `<img src="data:${req.files.file.mimetype};base64,${base64_encode(req.files.file.data)}" />` 
+            imageModel.image = `data:${req.files.file.mimetype};base64,${base64_encode(req.files.file.data)}/>` 
             user.imageList.unshift(imageModel)
             user.save()
         })    

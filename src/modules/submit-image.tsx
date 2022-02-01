@@ -10,8 +10,7 @@ export const SubmitImagePage = () => {
     const uploadHandler = (event: React.ChangeEvent<any>) => {
         event.preventDefault()
         const formData = new FormData();
-        const image = event.target.file.files[0];
-
+        const image = event.target.file.files[0];        
         const createDate = () => {
             const day = new Date().getDate()
             const month = new Date().getMonth()
@@ -26,7 +25,7 @@ export const SubmitImagePage = () => {
         console.log(formData);
         
         axios.post(`http://localhost:5000/api/v1/images/${pathID}`, formData, {headers: {'Content-Type': 'multipart/form-data',}})
-          .then((res) => console.log("image has been send"))
+          .then((res) => alert("image has been send"))
       }
       console.log(pathID);
       

@@ -1,35 +1,19 @@
  .main-page-container{
+    padding-top: 1rem;
     .image-list{
          margin:0rem 1rem;
          padding-top: 5rem;
-         columns: 4;
+         columns: 5;
          a{
-            text-decoration: none;
+            margin-bottom: 1rem;
+            width: 100%;
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: white;
          }
          .image-item{
             width: 100%;
-            padding-bottom: 1rem;
-            transition: .5s;
-            overflow: hidden;
-            border-radius: 10px;
-            margin-top: 1rem;
-            display: inline-block;
-            text-align: center;
-            box-shadow: 2.5px 2.5px 7.5px rgba(0, 0, 0, 0.5);
-            background-color: white;
-            img{
-               width: 100%;
-            }
-            .image-details{
-               color: black;
-               padding-top: 1rem;
-               .image-title{
-                  font-weight: 700;
-               }
-            }
-         }
-         .image-item:hover{
-            opacity: .75;
          }
      }
  }

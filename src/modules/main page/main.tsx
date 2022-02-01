@@ -35,15 +35,12 @@ export const MainPage:React.FC = () => {
                     imageList.length && (
                         imageList.map(item=>{
                             const {author, title, _id, image}:ImageProps = item
-                            return <article className="image-item">
-                                        <a href={`/images/${author.userName}/${_id}`}>
-                                            {image && (parse(image))}
-                                            <article className="image-details">
-                                                <h3 className="image-title">{title}</h3>
-                                                <span className="image-author">{author.userName}</span>
-                                            </article>
-                                        </a>
-                                    </article>
+                            return (
+                                    <a href={`/images/${author.userName}/${_id}`}>
+                                        <img className="image-item" src={image}/>
+                                    </a>
+                            )
+                                        
                         })
                     )
                 }

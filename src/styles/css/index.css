@@ -2,8 +2,7 @@ body {
   margin: 0; }
 
 .page-container {
-  height: 100vh;
-  border: 5px teal solid; }
+  height: 100vh; }
 
 .user-form {
   box-shadow: rgba(0, 0, 0, 0.25) 2.5px 2.5px 10px;
@@ -18,7 +17,19 @@ input {
   margin-bottom: 1rem; }
 
 input[type=submit] {
+  transition: .5s;
+  color: white;
   padding: 0.5rem 1rem;
-  border: 1px solid black;
+  border: none;
   border-radius: 2rem;
-  width: 100%; }
+  width: 100%;
+  background-color: #5dd2c7; }
+
+input[type=submit]:hover {
+  opacity: .75; }
+
+.image-item {
+  transition: .5s; }
+
+.image-item:hover {
+  opacity: .5; }

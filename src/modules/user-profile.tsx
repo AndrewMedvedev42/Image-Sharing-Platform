@@ -46,32 +46,27 @@ console.log(userData);
         return image_list.map((item:any)=>{
             const {author, title, _id, image, description}:ImageProps = item
             return (
-                <article className="image-item">
                     <a href={`/images/${author.userName}/${_id}`}>
-                        {image && (parse(image))}
-                        <h3>{title}</h3>
-                        <p>{description}</p>
-                        <span>{author.userName}</span>
+                        <img className="image-item" src={image}/>
                     </a>
-                </article>
             )
         })
     }
 
     return (
-        <section className="page-container user-page-container">
+        <section className="user-page-container">
             {
                 userData && (
                     <>
                     <article className="user-details">
-                        <h1>{userData["firstName"]} {userData["lastName"]}</h1>
-                        <h2>{userData["userName"]}</h2>
+                        <h1 className="user-username">{userData["userName"]}</h1>
+                        <h5 className="user-fullname">{userData["firstName"]} {userData["lastName"]}</h5>
                     </article>
                     <section className="upload-image-section">
                         {
                             userRole.userID === userData["_id"] && (
                                 <div>
-                                    <h2>Upload new image</h2>
+                                    <h3>Upload new image</h3>
                                     <Link to={`/users/${userData["_id"]}/submit-image`}>
                                         <input type="submit" value="Upload"/>
                                     </Link>
@@ -79,7 +74,7 @@ console.log(userData);
                             )
                         }
                     </section>
-                    <section>
+                    <section className="user-image-list">
                         {returnImageList(userData["imageList"])}
                     </section>
                     </>
