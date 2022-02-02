@@ -1,47 +1,27 @@
-.image-preview-page{
-    padding-top: 6rem;
+.image_preview_page_section{
     display: flex;
-    .image-section{
+    align-items: flex-start;
+    .image_section{
+        height: 100%;
+        margin-right: 1rem;
         width: 70%;
-        margin:1rem;
-        .image-container{
+        .image_container{
             display: flex;
             justify-content: center;
-            height: 500px;
-            padding-bottom: 1rem;
+            max-height: 550px;
             img{
-                height: 100%;
+                max-width: 100%;
+                max-height: 550px;
             }
         }
-        .image-details{
-            padding: 1rem;
-            div{
-                display: flex;
-                align-items: center;
-                .image-title{
-                    font-weight: 700;
-                    font-size: 2rem;
-                }
-                .author-username{
-                    margin-left: 1rem;
-                    opacity: .5;
-                }
-            }
-            .image-description{
-                font-size: 1.25rem;
+        .image_details{
+            padding: 1rem 0;
+            .image_title{
+                font-weight: 700;
             }
         }
     }
-    .other-images-section{
+    .other_images_section{
         width: 30%;
-        columns: 2;
-        padding: 1rem;
-        margin-right: 1rem;
-        img{
-            
-            margin-bottom: 1rem;
-            width: 100%;
-            display: inline-block;
-        }
     }
 }

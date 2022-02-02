@@ -53,7 +53,7 @@ export const LoginInPage:React.FC = () => {
         }
     } 
     return (
-        <div className="page-container login-page-container">
+        <div className="form_section login_page_container">
             <form onSubmit={getUserDataByLogin} className="user-form login-form">
                 <h2>Log in</h2>
                 <input type="email" placeholder="email" className="form-control" onChange={(e)=>{setUserLoginEmail(e.target.value)}}/>

@@ -1,6 +1,8 @@
 import axios from 'axios';
+import FadeIn from 'react-fade-in';
 import { useEffect, useState } from "react"
-import parse from "html-react-parser";
+import { LoadingMessage } from "../componets/loading-message";
+import { ErrorMessage } from "../componets/error_message";
 
 interface ImageProps {
     author: {
@@ -18,33 +20,34 @@ interface ImageProps {
 
 export const MainPage:React.FC = () => {
     const [imageList, setImageList] = useState([])
-
+    const [errorMessage, setErrorMessage] = useState()
     useEffect(()=>{
         axios.get(`http://localhost:5000/api/v1/images`)
-            .then(res => setImageList(res.data.images)).catch(err=>console.log(err));
+            .then(res => setImageList(res.data.images))
+            .catch(err=>setErrorMessage(err))
     },[])
 
-    console.log(imageList);
-    
-
     return (
-        <section className="main-page-container">
-            <section className="image-list">
-                {
-                    
-                    imageList.length && (
-                        imageList.map(item=>{
-                            const {author, title, _id, image}:ImageProps = item
-                            return (
-                                    <a href={`/images/${author.userName}/${_id}`}>
-                                        <img className="image-item" src={image}/>
-                                    </a>
-                            )
-                                        
-                        })
-                    )
-                }
-            </section>
+        <section className="main_page_section">
+            {!errorMessage ? (
+                    imageList[0] ? (
+                        <section className="image_list_section wide_image_list_section"> 
+                            <FadeIn>    
+                            {
+                                imageList.map(item=>{
+                                    const {title, author, _id, image}:ImageProps = item
+                                    return (
+                                        <a className="image_item" href={`/images/${author.userName}/${_id}`}>
+                                            <img className="image" src={image}/>
+                                        </a>
+                                    )           
+                                })
+                            }    
+                            </FadeIn>     
+                        </section>
+                    ):<LoadingMessage message="Loading..."/>
+                ):<ErrorMessage error_message={errorMessage}/>
+            }    
         </section>
     )
 }

@@ -1,8 +1,26 @@
 body{
-    margin:0;
+    padding-top: 74px;
+    padding: calc(74px + 2rem) 2rem 0px;
 }
-.page-container{
-    height: 100vh;
+.form_section{
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .checked_icon{
+        color: #5dd2c7;
+    }
+    .message_text{
+        font-size: 2rem;
+        font-weight: 700;
+    }
 }
 
 .user-form{
@@ -33,10 +51,59 @@ input[type=submit]:hover{
     opacity: .75;
 }
 
-.image-item{
-    transition: .5s;
+.image_list_section{
+    .image_item{
+        transition: .5s;
+        overflow: hidden;
+        border-radius: 15px;
+        display: inline-block;
+        margin-bottom: .75rem;
+        .image{
+            width: 100%;
+        }
+    }
+    .image_item:hover{
+        opacity: .75;
+    }
 }
 
-.image-item:hover{
-    opacity: .5;
+.wide_image_list_section{
+    columns:5
+}
+
+.small_image_list_section{
+    columns:2
+}
+
+.side_effect{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading_message{
+    color: #D25D68;
+    .loading_text{
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    #loading_icon{
+        animation: loading 1s linear infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+    }
+    
+    @keyframes loading{
+        0% {transform: translateY(-10px)}
+        50% {transform: translateY(0px)}
+        100% {transform: translateY(-10px)}
+    }
+}
+
+.error_message{
+    color: crimson;
+    .error_text{
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
 }

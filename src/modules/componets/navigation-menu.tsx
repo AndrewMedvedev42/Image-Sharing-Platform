@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { AiTwotoneHome } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import {Link} from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'

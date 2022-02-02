@@ -8,6 +8,7 @@ import { SignUpPage } from "./modules/signup";
 import { UserProfilePage } from "./modules/user-profile";
 import { SubmitImagePage } from "./modules/submit-image";
 import { ImagePreviewPage } from "./modules/image-preview";
+import { SuccesssfullUploadPage } from "./modules/successfull-upload-page";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/users/:id" element={<UserProfilePage/>}></Route>
         <Route path="/users/:id/submit-image" element={<SubmitImagePage/>}></Route>
         <Route path="/images/:username/:id" element={<ImagePreviewPage/>}></Route>
+        <Route path="/success" element={<SuccesssfullUploadPage/>}></Route>
       </Routes>
   </Router>
   );

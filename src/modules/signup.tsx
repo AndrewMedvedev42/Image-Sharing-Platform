@@ -62,7 +62,7 @@ export const SignUpPage = () => {
             } 
 
     return (
-        <div onSubmit={startRegisterProcess} className="page-container sign-up-page-container">
+        <div onSubmit={startRegisterProcess} className="form_section">
             <form action="" className="user-form">
                 <h2>Sign up</h2>
                 <input type="name" className="form-control" placeholder="First name" onChange={(e)=>setUserFirstName(e.target.value)}/>
