@@ -30,7 +30,7 @@ export const SignUpPage = () => {
                 if (userEmail.match(emailValidation)) {
                     if(userPassword.match(passwordValidation)){
                             axios
-                            .get(`https://localhost:5000/api/v1/login_register?email=${userEmail}`)
+                            .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/login_register?email=${userEmail}`)
                             .then(res => alert("Sorry, account with this email already exists."))
                             .catch(err => {
                                 //IF EMAIL NOT FOUND, CREATES NEW USER ACCOUNT
@@ -44,7 +44,7 @@ export const SignUpPage = () => {
                                 }
                                 //POSTS NEW USER INFO INTO DATABASE
                                 axios
-                                    .post(`http://localhost:5000/api/v1/login_register`, bodyData)
+                                    .post(`${process.env.REACT_APP_SERVER_URL}/api/v1/login_register`, bodyData)
                                     .then(res => {
                                         alert("Account successfully registered");
                                         history(`/login`)

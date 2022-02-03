@@ -10,6 +10,7 @@ import "./styles/css/modules/user-page.css"
 import "./styles/css/modules/submit-image-page.css";
 import "./styles/css/main-page.css"
 import "./styles/css/modules/image-preview-page.css"
+import "./styles/css/modules/landing-page.css"
 
 import reportWebVitals from './reportWebVitals';
 

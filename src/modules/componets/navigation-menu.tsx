@@ -31,7 +31,7 @@ export const NavigationBar:React.FC = () => {
         <Navbar expand="lg" fixed="top" className="navigation-bar">
             <Container className="container">
             <Navbar.Brand className="logo-container" href="/">
-                <img src={`${process.env.PUBLIC_URL}/media/Kvazar-logo.svg`} alt="kvazar-logo"/>
+                <img src={`${process.env.PUBLIC_URL}/media/Kvazar_logo.svg`} alt="kvazar-logo"/>
                 <span className="website-name">Kvazar</span>
             </Navbar.Brand>
                 {

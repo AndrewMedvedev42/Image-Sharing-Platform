@@ -27,13 +27,10 @@ export const SubmitImagePage = () => {
         formData.append('title', imageTitle);   
         formData.append('description', imageDescription);   
         formData.append('dateOfCreation', createDate());         
-        console.log(formData);
         
-        axios.post(`http://localhost:5000/api/v1/images/${pathID}`, formData, {headers: {'Content-Type': 'multipart/form-data',}})
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/images/${pathID}`, formData, {headers: {'Content-Type': 'multipart/form-data',}})
           .then((res) => history(`/success`))
       }
-      console.log(pathID);
-      
     return (
         <section className="page-container submit-image-page-container">
             {

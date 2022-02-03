@@ -2,6 +2,10 @@ body{
     padding-top: 74px;
     padding: calc(74px + 2rem) 2rem 0px;
 }
+.description{
+    font-size: 1.5rem;
+}
+
 .form_section{
     height: 70vh;
     display: flex;
@@ -79,20 +83,19 @@ input[type=submit]:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    .message_text{
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
 }
 
 .loading_message{
     color: #D25D68;
-    .loading_text{
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
     #loading_icon{
         animation: loading 1s linear infinite;
         transform-origin: center;
         transform-box: fill-box;
     }
-    
     @keyframes loading{
         0% {transform: translateY(-10px)}
         50% {transform: translateY(0px)}
@@ -102,8 +105,8 @@ input[type=submit]:hover{
 
 .error_message{
     color: crimson;
-    .error_text{
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
+}
+
+.no_image_message_container{
+    color: #800d8f;
 }

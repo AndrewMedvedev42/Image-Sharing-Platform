@@ -2,6 +2,9 @@ body {
   padding-top: 74px;
   padding: calc(74px + 2rem) 2rem 0px; }
 
+.description {
+  font-size: 1.5rem; }
+
 .form_section {
   height: 70vh;
   display: flex;
@@ -65,12 +68,12 @@ input[type=submit]:hover {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  .side_effect .message_text {
+    font-size: 1.5rem;
+    font-weight: 700; }
 
 .loading_message {
   color: #D25D68; }
-  .loading_message .loading_text {
-    font-size: 1.5rem;
-    font-weight: 700; }
   .loading_message #loading_icon {
     animation: loading 1s linear infinite;
     transform-origin: center;
@@ -86,6 +89,6 @@ input[type=submit]:hover {
 
 .error_message {
   color: crimson; }
-  .error_message .error_text {
-    font-size: 1.5rem;
-    font-weight: 700; }
+
+.no_image_message_container {
+  color: #800d8f; }

@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { NavigationBar } from "./modules/componets/navigation-menu";
 
-import { MainPage } from "./modules/main page/main";
+import { KvazarLandingPage } from "./modules/landing_page";
+import { MainPage } from "./modules/main_page/main";
 import { LoginInPage } from "./modules/login";
 import { SignUpPage } from "./modules/signup";
 import { UserProfilePage } from "./modules/user-profile";
@@ -15,7 +16,8 @@ function App() {
     <Router>
     <NavigationBar/>
       <Routes>
-        <Route path="/" element={<MainPage/>}></Route>
+        <Route path="/" element={<KvazarLandingPage/>}></Route>
+        <Route path="/main" element={<MainPage/>}></Route>
         <Route path="/login" element={<LoginInPage/>}></Route>
         <Route path="/signup" element={<SignUpPage/>}></Route>
         <Route path="/users/:id" element={<UserProfilePage/>}></Route>

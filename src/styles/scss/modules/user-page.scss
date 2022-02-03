@@ -25,4 +25,23 @@
             width: 300px;
         }
     }
+    .image_list_section{
+        .image_item{
+            .delete_button{
+                transition: .5s;
+                color: white;
+                font-weight: 700;
+                border: white 5px solid;
+                background-color: crimson;
+                border-top-left-radius: 15px;
+                border-bottom-right-radius: 15px;
+                width: 50px;
+                height: 50px;
+                position: absolute;
+            }
+            .delete_button:hover{
+                background-color: rgb(129, 12, 35);
+            }
+        }
+    }
 }

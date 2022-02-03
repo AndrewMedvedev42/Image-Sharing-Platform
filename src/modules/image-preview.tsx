@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import {useLocation} from "react-router-dom"
 import { LoadingMessage } from "./componets/loading-message";
 import { ErrorMessage } from "./componets/error_message";
+import { NoImagesMessage } from "./componets/no_images_message";
 import FadeIn from 'react-fade-in';
 
 
@@ -36,7 +37,7 @@ export const ImagePreviewPage = () => {
     },[image_list])
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/api/v1/users/user-names/${userName}`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/user-names/${userName}`)
             .then(res=>setImageList(res.data.user.imageList))
             .catch(err=> setErrorMessage(err));
     },[userName])
@@ -58,9 +59,9 @@ export const ImagePreviewPage = () => {
                             <p className="image_description">{image["description"]}</p>
                         </article>
                     </article>
-                    <article className="other_images_section image_list_section small_image_list_section">
                         {
-                            filtered_image_list.length && (
+                            filtered_image_list.length ? (
+                                <article className="other_images_section image_list_section small_image_list_section">{
                                 filtered_image_list.map((item:any)=>{
                                     if (item["image"]) {
                                         return (
@@ -70,10 +71,10 @@ export const ImagePreviewPage = () => {
                                         ) 
                                     }
                                 })
-                            )
-                        }
+                            }</article>
+                            ):<NoImagesMessage message="This user has no more images"/>
+                        } 
                                     
-                    </article>
                     </section>
                 ):<LoadingMessage message="Loading..."/>
             ):<ErrorMessage error_message={errorMessage}/>

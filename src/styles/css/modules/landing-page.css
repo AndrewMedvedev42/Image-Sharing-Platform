@@ -1,0 +1,39 @@
+.center_text {
+  text-align: center; }
+
+.section_title {
+  color: #D25D68;
+  font-size: 3rem;
+  font-weight: 700; }
+
+.landing_page_section .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .landing_page_section .header .main_logo {
+    width: 250px; }
+  .landing_page_section .header .main_name {
+    color: #5dd2c7;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 700;
+    font-size: 10rem; }
+
+.landing_page_section .description_section .future_updates_section ul {
+  text-align: center;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.landing_page_section .technology_section .texhnology_list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap; }
+  .landing_page_section .technology_section .texhnology_list .technology_item {
+    margin: 1rem; }
+    .landing_page_section .technology_section .texhnology_list .technology_item .technology_image {
+      width: 50px; }
+    .landing_page_section .technology_section .texhnology_list .technology_item .technology_name {
+      margin-left: 1rem;
+      font-size: 1.25rem; }

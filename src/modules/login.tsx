@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom";
 export const LoginInPage:React.FC = () => {
     const [userLoginEmail, setUserLoginEmail] = useState("")
     const [userLoginPassword, setUserLoginPassword] = useState("")
-
 //USE NAVIGATE TO MOVE BETWEEN PAGES
     const history = useNavigate();
 
@@ -37,7 +36,7 @@ export const LoginInPage:React.FC = () => {
         if (userLoginEmail.match(mailValidation)) {
             if (userLoginPassword.match(passwordValidation)) {
                 axios
-                    .get(`http://localhost:5000/api/v1/login_register?email=${userLoginEmail}`)
+                    .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/login_register?email=${userLoginEmail}`)
                     .then(res => {
                         userCheckProcces(res)
                     })
