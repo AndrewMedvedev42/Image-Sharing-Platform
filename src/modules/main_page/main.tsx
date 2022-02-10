@@ -35,7 +35,7 @@ export const MainPage:React.FC = () => {
         <section className="main_page_section">
             {!errorMessage ? (
                     imageList.length ? (
-                        // imageList[0] ? (
+                        imageList[0] ? (
                             <section className="image_list_section wide_image_list_section"> 
                                 <FadeIn>    
                                 {
@@ -50,7 +50,7 @@ export const MainPage:React.FC = () => {
                                 }    
                                 </FadeIn>     
                             </section>
-                        // ):<NoImagesMessage message="No images to display"/>
+                        ):<NoImagesMessage message="No images to display"/>
                     ):<LoadingMessage message="Loading..."/>
                 ):<ErrorMessage error_message={errorMessage}/>
             }    

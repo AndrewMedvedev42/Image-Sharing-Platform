@@ -25,3 +25,15 @@
         width: 30%;
     }
 }
+
+@media (max-width: 850px) {
+    .image_preview_page_section{
+        flex-direction: column;
+        .image_section{
+            width: 100%;
+        }
+        .other_images_section{
+            width: 100%;
+        }
+    }
+}

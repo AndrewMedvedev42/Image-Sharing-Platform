@@ -18,3 +18,11 @@
         font-weight: 700; }
   .image_preview_page_section .other_images_section {
     width: 30%; }
+
+@media (max-width: 850px) {
+  .image_preview_page_section {
+    flex-direction: column; }
+    .image_preview_page_section .image_section {
+      width: 100%; }
+    .image_preview_page_section .other_images_section {
+      width: 100%; } }

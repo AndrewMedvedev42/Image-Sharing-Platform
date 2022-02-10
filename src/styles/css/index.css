@@ -53,16 +53,24 @@ input[type=submit]:hover {
   display: inline-block;
   margin-bottom: .75rem; }
   .image_list_section .image_item .image {
+    transition: .5s;
     width: 100%; }
 
 .image_list_section .image_item:hover {
-  opacity: .75; }
+  transform: translateY(5px); }
+
+.image_list_section .disabled_image_item {
+  opacity: .5; }
 
 .wide_image_list_section {
   columns: 5; }
 
 .small_image_list_section {
   columns: 2; }
+
+@media (max-width: 700px) {
+  .wide_image_list_section {
+    columns: 2; } }
 
 .side_effect {
   display: flex;

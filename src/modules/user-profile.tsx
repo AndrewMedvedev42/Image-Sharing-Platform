@@ -25,9 +25,13 @@ export const UserProfilePage = () => {
     const [errorMessage, setErrorMessage] = useState()
     const pathID = useLocation().pathname.split('/')[2]
     const [userImageCollection, setUserImageCollection] = useState([])
+    const [isDeletingImage, setIsDeletingImage] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [refresh, setRefresh] = useState(false)
 
     const distributeData = (res:any) => {
         const {user} = res.data
+        setIsLoading(false)
         setUserData(user)
         setUserImageCollection(user.imageList)
     }
@@ -47,17 +51,25 @@ export const UserProfilePage = () => {
             axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/${pathID}`)
                 .then(res=>distributeData(res))
                 .catch(err=> setErrorMessage(err));
-    },[pathID])
+    },[refresh])
 
     const returnImageList = (image_list:any) => {
             return image_list.map((item:any)=>{
                 const {author, _id, image}:ImageProps = item
                 return (
-                        <article className="image_item">
-                            <button className="delete_button" onClick={()=>{deleteImage(pathID, _id)}}>X</button>
-                            <Link to={`/images/${author.userName}/${_id}`}>
-                                <img className="image" src={image}/>
-                            </Link>
+                        <article className={`image_item ${isDeletingImage && "disabled_image_item"}`}>
+                            {
+                                !isDeletingImage ? (
+                                    <button className="delete_button" onClick={()=>{deleteImage(pathID, _id)}}>X</button>
+                                ): <button className="delete_button delete_button_loading">.</button>
+                            }
+                            {
+                                !isDeletingImage ? (
+                                    <Link to={`/images/${author.userName}/${_id}`}>
+                                        <img className="image" src={image}/>
+                                    </Link>
+                                ):<img className="image" src={image}/>
+                            }
                         </article>
                 )
             })
@@ -68,13 +80,21 @@ export const UserProfilePage = () => {
     }
 
     const removeTaskFromList = (image_id:String) => {
+        setIsDeletingImage(false)
         let rostedTaskList = userImageCollection.filter((item:any) => item._id !== image_id)
         setUserImageCollection(rostedTaskList);
     }
 
     const deleteImage = (user_id:String, image_id:String) => {
+        setIsDeletingImage(true)
         axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/v1/images/${user_id}/${image_id}`)
-        .then(res => removeTaskFromList(image_id)).catch(error=>console.log(error));
+        .then(res => removeTaskFromList(image_id)).catch(error=>setIsDeletingImage(false));
+    }
+
+    const updateUserStatus = (user_id:String, user_private_status:Boolean) => {
+        setIsLoading(true)
+        axios.patch(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/${user_id}`, {privateAccount:!user_private_status})
+        .then(res => setRefresh(!refresh)).catch(error=>alert("error"));
     }
 
     return (
@@ -82,33 +102,44 @@ export const UserProfilePage = () => {
             {
                 !errorMessage ? (
                         userData ? (
-                            <>
-                            <article className="user_details">
-                                <h1 className="user_username">{userData["userName"]}</h1>
-                                <h5 className="user_fullname">{userData["firstName"]} {userData["lastName"]}</h5>
-                                <p className="gallery_length">Total submitions: {imageListLength(userData["imageList"])}</p>
-                            </article>
-                            <section className="upload_section">
+                            !userData["privateAccount"] || userRole.userID === userData["_id"] ? (
+                                <>
+                                <article className="user_details">
+                                    <h1 className="user_username">{userData["userName"]}</h1>
+                                    <h5 className="user_fullname">{userData["firstName"]} {userData["lastName"]}</h5>
+                                    <p className="gallery_length">Total submitions: {imageListLength(userData["imageList"])}</p>
+                                    {
+                                        userRole.userID === userData["_id"] && (
+                                            <input className={`orange_button ${isLoading && "inactive_button"}`} type="submit" value={
+                                                !isLoading ? (
+                                                    !userData["privateAccount"] ? ("Become private")
+                                                    :"Become public") 
+                                                        : "Changing..."} onClick={()=>updateUserStatus(userData["_id"], userData["privateAccount"])} disabled={isLoading}/>
+                                        )
+                                    }
+                                </article>
+                                <section className="upload_section">
+                                    {
+                                        userRole.userID === userData["_id"] && (
+                                            <div>
+                                                <Link to={`/users/${userData["_id"]}/submit-image`}>
+                                                    <input type="submit" value="Upload an image"/>
+                                                </Link>
+                                            </div>
+                                        )
+                                    }
+                                </section>
                                 {
-                                    userRole.userID === userData["_id"] && (
-                                        <div>
-                                            <Link to={`/users/${userData["_id"]}/submit-image`}>
-                                                <input type="submit" value="Upload an image"/>
-                                            </Link>
-                                        </div>
-                                    )
+                                    userImageCollection.length ? (
+                                        <section className="image_list_section wide_image_list_section">
+                                            <FadeIn>
+                                                {returnImageList(userImageCollection)}
+                                            </FadeIn>
+                                        </section>
+                                    ):<NoImagesMessage message="No images added"/>
                                 }
-                            </section>
-                            {
-                                userImageCollection.length ? (
-                                    <section className="image_list_section wide_image_list_section">
-                                        <FadeIn>
-                                            {returnImageList(userImageCollection)}
-                                        </FadeIn>
-                                    </section>
-                                ):<NoImagesMessage message="No images added"/>
-                            }
-                            </>
+                                </>
+                            ):<p>private</p>
                         ):<LoadingMessage message="Loading..."/>
                 ):<ErrorMessage error_message={errorMessage}/>
             }

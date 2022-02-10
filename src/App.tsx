@@ -16,8 +16,8 @@ function App() {
     <Router>
     <NavigationBar/>
       <Routes>
-        <Route path="/" element={<KvazarLandingPage/>}></Route>
-        <Route path="/main" element={<MainPage/>}></Route>
+        <Route path="/" element={<MainPage/>}></Route>
+        <Route path="/main" element={<KvazarLandingPage/>}></Route>
         <Route path="/login" element={<LoginInPage/>}></Route>
         <Route path="/signup" element={<SignUpPage/>}></Route>
         <Route path="/users/:id" element={<UserProfilePage/>}></Route>

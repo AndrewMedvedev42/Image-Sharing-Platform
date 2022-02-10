@@ -4,7 +4,8 @@
 .section_title {
   color: #D25D68;
   font-size: 3rem;
-  font-weight: 700; }
+  font-weight: 900;
+  margin-bottom: 2rem; }
 
 .landing_page_section .header {
   display: flex;

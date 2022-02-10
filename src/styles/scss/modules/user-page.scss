@@ -1,5 +1,7 @@
 .user_page_section{
     .user_details{
+        margin:0 auto;
+        width: 40%;
         text-align: center;
         .user_username{
             margin:0 0 1rem;
@@ -9,6 +11,7 @@
         }
         .user_fullname{
             margin:0;
+            font-weight: lighter;
             font-size: 2rem;
             opacity: .5;
         }
@@ -16,13 +19,23 @@
             font-weight: 700;
             font-size: 1.5rem;
         }
+        .orange_button{
+            background-color: orange;
+        }
+        .inactive_button{
+            background-color: gray;
+        }
+        
+        .inactive_button:hover{
+            opacity: 1;
+        }
     }
     .upload_section{
         margin-bottom: 1rem;
         div{
             text-align: center;
             margin:0 auto;
-            width: 300px;
+            width: 40%;
         }
     }
     .image_list_section{
@@ -31,7 +44,7 @@
                 transition: .5s;
                 color: white;
                 font-weight: 700;
-                border: white 5px solid;
+                border: white 2.5px solid;
                 background-color: crimson;
                 border-top-left-radius: 15px;
                 border-bottom-right-radius: 15px;
@@ -41,6 +54,31 @@
             }
             .delete_button:hover{
                 background-color: rgb(129, 12, 35);
+            }
+            .delete_button_loading, .delete_button_loading:hover{
+                background-color: rgb(68, 68, 68);
+                cursor:crosshair;
+            }
+        }
+    }
+
+    @media (max-width: 800px) {
+        .user_details{
+            width: 70%;
+        }
+        .upload_section{
+            div{
+                width: 70%;
+            }
+        }
+    }
+    @media (max-width: 500px) {
+        .user_details{
+            width: 100%;
+        }
+        .upload_section{
+            div{
+                width: 100%;
             }
         }
     }

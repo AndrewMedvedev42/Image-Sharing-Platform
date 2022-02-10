@@ -1,4 +1,6 @@
 .user_page_section .user_details {
+  margin: 0 auto;
+  width: 40%;
   text-align: center; }
   .user_page_section .user_details .user_username {
     margin: 0 0 1rem;
@@ -7,24 +9,31 @@
     font-weight: 900; }
   .user_page_section .user_details .user_fullname {
     margin: 0;
+    font-weight: lighter;
     font-size: 2rem;
     opacity: .5; }
   .user_page_section .user_details .gallery_length {
     font-weight: 700;
     font-size: 1.5rem; }
+  .user_page_section .user_details .orange_button {
+    background-color: orange; }
+  .user_page_section .user_details .inactive_button {
+    background-color: gray; }
+  .user_page_section .user_details .inactive_button:hover {
+    opacity: 1; }
 
 .user_page_section .upload_section {
   margin-bottom: 1rem; }
   .user_page_section .upload_section div {
     text-align: center;
     margin: 0 auto;
-    width: 300px; }
+    width: 40%; }
 
 .user_page_section .image_list_section .image_item .delete_button {
   transition: .5s;
   color: white;
   font-weight: 700;
-  border: white 5px solid;
+  border: white 2.5px solid;
   background-color: crimson;
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -34,3 +43,19 @@
 
 .user_page_section .image_list_section .image_item .delete_button:hover {
   background-color: #810c23; }
+
+.user_page_section .image_list_section .image_item .delete_button_loading, .user_page_section .image_list_section .image_item .delete_button_loading:hover {
+  background-color: #444444;
+  cursor: crosshair; }
+
+@media (max-width: 800px) {
+  .user_page_section .user_details {
+    width: 70%; }
+  .user_page_section .upload_section div {
+    width: 70%; } }
+
+@media (max-width: 500px) {
+  .user_page_section .user_details {
+    width: 100%; }
+  .user_page_section .upload_section div {
+    width: 100%; } }
