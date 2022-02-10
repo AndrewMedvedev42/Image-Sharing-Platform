@@ -42,6 +42,8 @@ export const ImagePreviewPage = () => {
             .catch(err=> setErrorMessage(err));
     },[userName])
 
+    console.log(image);
+    
     return (
             <>
             {!errorMessage ? (
@@ -52,10 +54,8 @@ export const ImagePreviewPage = () => {
                             <img src={image["image"]}/>
                         </section>
                         <article className="image_details">
-                            <div>
-                                <h1 className="image_title">{image["title"]}</h1>
-                                <span className="author_username">{image["author"]["userName"]}</span>
-                            </div>
+                            <h1 className="image_title">{image["title"]}</h1>
+                            <span className="author_username">Uploaded by: <a className="text_link" href={`/users/${image["author"]["userId"]}`}>{image["author"]["userName"]}</a></span>
                             <p className="image_description">{image["description"]}</p>
                         </article>
                     </article>

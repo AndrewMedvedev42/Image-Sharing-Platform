@@ -5,12 +5,18 @@ const getAllImages = async(req,res) => {
     try {
         const user = await User.find({})
         const images = []
-        user.forEach(element => {
+        const publicUser = []
+        user.filter(item=>{
+            if (item.privateAccount !== true) {
+                publicUser.push(item)
+            }
+           
+        })
+        publicUser.forEach(element => {
             element.imageList.forEach(item => {
                 images.push(item)
             });
         });
-        console.log(images);
         res.status(201).json({images})
     } catch (error) {
         res.status(500).json({msg:error})

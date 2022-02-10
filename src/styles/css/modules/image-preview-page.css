@@ -16,6 +16,10 @@
       padding: 1rem 0; }
       .image_preview_page_section .image_section .image_details .image_title {
         font-weight: 700; }
+      .image_preview_page_section .image_section .image_details .text_link {
+        color: #D25D68; }
+      .image_preview_page_section .image_section .image_details .image_description {
+        font-size: 1.5rem; }
   .image_preview_page_section .other_images_section {
     width: 30%; }
 

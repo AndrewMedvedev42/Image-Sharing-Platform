@@ -53,15 +53,17 @@ export const UserProfilePage = () => {
                 .catch(err=> setErrorMessage(err));
     },[refresh])
 
-    const returnImageList = (image_list:any) => {
+    const returnImageList = (image_list:any, user_role_id:string, user_id:string) => {
             return image_list.map((item:any)=>{
                 const {author, _id, image}:ImageProps = item
                 return (
                         <article className={`image_item ${isDeletingImage && "disabled_image_item"}`}>
                             {
-                                !isDeletingImage ? (
-                                    <button className="delete_button" onClick={()=>{deleteImage(pathID, _id)}}>X</button>
-                                ): <button className="delete_button delete_button_loading">.</button>
+                                user_role_id === user_id && (
+                                    !isDeletingImage ? (
+                                        <button className="delete_button" onClick={()=>{deleteImage(pathID, _id)}}>X</button>
+                                    ): <button className="delete_button delete_button_loading">.</button>
+                                )
                             }
                             {
                                 !isDeletingImage ? (
@@ -112,9 +114,9 @@ export const UserProfilePage = () => {
                                         userRole.userID === userData["_id"] && (
                                             <input className={`orange_button ${isLoading && "inactive_button"}`} type="submit" value={
                                                 !isLoading ? (
-                                                    !userData["privateAccount"] ? ("Become private")
-                                                    :"Become public") 
-                                                        : "Changing..."} onClick={()=>updateUserStatus(userData["_id"], userData["privateAccount"])} disabled={isLoading}/>
+                                                    !userData["privateAccount"] ? ("Change to private")
+                                                    :"Change to public") 
+                                                        : "Changing status..."} onClick={()=>updateUserStatus(userData["_id"], userData["privateAccount"])} disabled={isLoading}/>
                                         )
                                     }
                                 </article>
@@ -133,7 +135,7 @@ export const UserProfilePage = () => {
                                     userImageCollection.length ? (
                                         <section className="image_list_section wide_image_list_section">
                                             <FadeIn>
-                                                {returnImageList(userImageCollection)}
+                                                {returnImageList(userImageCollection, userRole.userID, userData["_id"])}
                                             </FadeIn>
                                         </section>
                                     ):<NoImagesMessage message="No images added"/>
