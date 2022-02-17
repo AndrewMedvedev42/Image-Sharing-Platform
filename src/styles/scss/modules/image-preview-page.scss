@@ -19,16 +19,17 @@
             .image_title{
                 font-weight: 700;
             }
-            .text_link{
-                color:#D25D68;
-            }
             .image_description{
+                margin-top: 2rem;
                 font-size: 1.5rem;
             }
 
         }
     }
     .other_images_section{
+        width: 30%;
+    }
+    .unavalible_message_container{
         width: 30%;
     }
 }

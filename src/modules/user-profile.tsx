@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import {Link, useLocation} from "react-router-dom";
 import { LoadingMessage } from "./componets/loading-message";
 import { ErrorMessage } from "./componets/error_message";
-import { NoImagesMessage } from "./componets/no_images_message";
+import { UnavalibleMessage } from "./componets/unavalible-message";
 
 interface ImageProps {
     author: {
@@ -106,16 +106,17 @@ export const UserProfilePage = () => {
                         userData ? (
                             !userData["privateAccount"] || userRole.userID === userData["_id"] ? (
                                 <>
+                                <FadeIn>
                                 <article className="user_details">
                                     <h1 className="user_username">{userData["userName"]}</h1>
                                     <h5 className="user_fullname">{userData["firstName"]} {userData["lastName"]}</h5>
                                     <p className="gallery_length">Total submitions: {imageListLength(userData["imageList"])}</p>
                                     {
                                         userRole.userID === userData["_id"] && (
-                                            <input className={`orange_button ${isLoading && "inactive_button"}`} type="submit" value={
+                                            <input className={`submit_button orange_button ${isLoading && "inactive_button"}`} type="submit" value={
                                                 !isLoading ? (
-                                                    !userData["privateAccount"] ? ("Change to private")
-                                                    :"Change to public") 
+                                                    !userData["privateAccount"] ? ("Become private account")
+                                                    :"Become a public account") 
                                                         : "Changing status..."} onClick={()=>updateUserStatus(userData["_id"], userData["privateAccount"])} disabled={isLoading}/>
                                         )
                                     }
@@ -125,7 +126,7 @@ export const UserProfilePage = () => {
                                         userRole.userID === userData["_id"] && (
                                             <div>
                                                 <Link to={`/users/${userData["_id"]}/submit-image`}>
-                                                    <input type="submit" value="Upload an image"/>
+                                                    <input className="submit_button" type="submit" value="Upload an image"/>
                                                 </Link>
                                             </div>
                                         )
@@ -138,10 +139,11 @@ export const UserProfilePage = () => {
                                                 {returnImageList(userImageCollection, userRole.userID, userData["_id"])}
                                             </FadeIn>
                                         </section>
-                                    ):<NoImagesMessage message="No images added"/>
+                                    ):<UnavalibleMessage message="No images added"/>
                                 }
+                                </FadeIn>
                                 </>
-                            ):<p>private</p>
+                            ):<UnavalibleMessage message="This account is private"/>
                         ):<LoadingMessage message="Loading..."/>
                 ):<ErrorMessage error_message={errorMessage}/>
             }

@@ -28,17 +28,20 @@ export const NavigationBar:React.FC = () => {
     },[])
 
     return (
-        <Navbar expand="lg" fixed="top" className="navigation-bar">
+        <Navbar expand="lg" fixed="top" className="navigation_bar">
             <Container className="container">
-            <Navbar.Brand className="logo-container" href="/">
-                <img src={`${process.env.PUBLIC_URL}/media/Kvazar_logo.svg`} alt="kvazar-logo"/>
-                <span className="website-name">Kvazar</span>
+            <Navbar.Brand className="main_navigation_container" href="/">
+                <div className="logo_container">
+                    <img src={`${process.env.PUBLIC_URL}/media/Kvazar_logo.svg`} alt="kvazar-logo"/>
+                    <span className="website-name">Kvazar</span>
+                </div>
+                <Link to="/about" className="text_link">About</Link>
             </Navbar.Brand>
                 {
                     !isUserLogedIn ? (
                         <Nav.Link href="/login">Log in</Nav.Link>
                     ):(
-                        <Nav className="nav-container">
+                        <Nav className="nav_container">
                             <NavDropdown title={navDropdownTitle} id="basic-nav-dropdown">
                                 <NavDropdown.Item href={`/users/${userId}`}>Profile</NavDropdown.Item>
                                 <NavDropdown.Item href="/login">Log out</NavDropdown.Item>

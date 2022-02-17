@@ -1,13 +1,27 @@
-.navigation-bar{
+.navigation_bar{
     background-color: white;
     box-shadow: 0px 0px 7.5px rgba(0, 0, 0, 0.5);
     .container{
-        .logo-container{
+        .main_navigation_container{
+            padding: 0;
             display: flex;
             align-items: center;
-            img{
-                width: 40px;
-                margin-right: 1rem;
+            .text_link{
+                font-weight: 700;
+                text-decoration: none;
+                margin:0 0 0 2.5rem;
+            }
+            .text_link:hover{
+                text-decoration: underline;
+                color: #D25D68;
+            }
+            .logo_container{
+                display: flex;
+                align-items: center;
+                img{
+                    width: 40px;
+                    margin-right: 1rem;
+                }
             }
             .website-name{
                 color: #5dd2c7;

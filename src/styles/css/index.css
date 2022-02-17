@@ -34,7 +34,7 @@ body {
 input {
   margin-bottom: 1rem; }
 
-input[type=submit] {
+.submit_button {
   transition: .5s;
   color: white;
   padding: 0.5rem 1rem;
@@ -43,7 +43,7 @@ input[type=submit] {
   width: 100%;
   background-color: #5dd2c7; }
 
-input[type=submit]:hover {
+.submit_button:hover {
   opacity: .75; }
 
 .image_list_section .image_item {
@@ -98,5 +98,12 @@ input[type=submit]:hover {
 .error_message {
   color: crimson; }
 
-.no_image_message_container {
+.unavalible_message_container {
   color: #800d8f; }
+
+.text_link {
+  color: #D25D68; }
+
+.disabled_button, .disabled_button:hover {
+  opacity: 1;
+  background-color: gray; }

@@ -6,7 +6,7 @@
     color: #D25D68;
     font-size: 3rem;
     font-weight: 900;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .landing_page_section{
@@ -52,6 +52,18 @@
                     font-size: 1.25rem;
                 }
             }
+        }
+    }
+    .redirect_section{
+        margin:0 auto;
+        width: 30%;
+        margin-bottom: 2rem;
+    }
+    @media (max-width: 650px) {
+        .redirect_section{
+            margin:0 auto;
+            width: 100%;
+            margin-bottom: 2rem;
         }
     }
 }

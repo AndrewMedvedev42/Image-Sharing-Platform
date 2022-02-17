@@ -5,7 +5,7 @@
   color: #D25D68;
   font-size: 3rem;
   font-weight: 900;
-  margin-bottom: 2rem; }
+  margin-bottom: 1rem; }
 
 .landing_page_section .header {
   display: flex;
@@ -38,3 +38,14 @@
     .landing_page_section .technology_section .texhnology_list .technology_item .technology_name {
       margin-left: 1rem;
       font-size: 1.25rem; }
+
+.landing_page_section .redirect_section {
+  margin: 0 auto;
+  width: 30%;
+  margin-bottom: 2rem; }
+
+@media (max-width: 650px) {
+  .landing_page_section .redirect_section {
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 2rem; } }

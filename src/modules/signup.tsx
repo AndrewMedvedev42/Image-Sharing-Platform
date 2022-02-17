@@ -11,6 +11,8 @@ export const SignUpPage = () => {
             const [userName, setUserName] = useState("")
             const [userEmail, setUserEmail] = useState("")
             const [userPassword, setUserPassword] = useState("")
+
+            const [isLoading, setIsLoading] = useState(false)
 //USE NAVIGATE TO MOVE BETWEEN PAGES
                 const history = useNavigate();
 //VAILDATION SYMBOLS TO CHECK IF TYPED EMAIL OR PASSWORD CAN BE USED AS REAL EMAIL AND PASSWORD
@@ -19,6 +21,7 @@ export const SignUpPage = () => {
 //PROCESS OF DEPLOYING REGISTER INFO INTO DATABASE
             const startRegisterProcess = (e:React.ChangeEvent<any>) => {
                 e.preventDefault();
+                setIsLoading(true)
                 const ifEmptyUserData = (i:string) => {
                         if (!Boolean(i) && !isNaN(Number(i))) {
                             return "--"
@@ -26,12 +29,16 @@ export const SignUpPage = () => {
                             return i
                         }
                 }
+                const denyUserCreation = (message:string) => {
+                    alert(message)
+                    setIsLoading(false)
+                }
 //FINDS IF EMAIL ALREADY EXISTS AND CHECKS IF TYPED EMAIL OR PASSWORD CAN BE USED AS REAL EMAIL OR PASSWORD
                 if (userEmail.match(emailValidation)) {
                     if(userPassword.match(passwordValidation)){
                             axios
                             .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/login_register?email=${userEmail}`)
-                            .then(res => alert("Sorry, account with this email already exists."))
+                            .then(res => denyUserCreation("Sorry, account with this email already exists."))
                             .catch(err => {
                                 //IF EMAIL NOT FOUND, CREATES NEW USER ACCOUNT
                                 const bodyData = {
@@ -42,6 +49,8 @@ export const SignUpPage = () => {
                                     password:userPassword,
                                     toDoList:[]
                                 }
+                                console.log(bodyData);
+                                
                                 //POSTS NEW USER INFO INTO DATABASE
                                 axios
                                     .post(`${process.env.REACT_APP_SERVER_URL}/api/v1/login_register`, bodyData)
@@ -50,14 +59,14 @@ export const SignUpPage = () => {
                                         history(`/login`)
                                     })
                                     .catch(err => {
-                                        alert("Please, type your details correctly")
+                                        denyUserCreation("Please, type your details correctly")
                                     });
                         })
                     }else{
-                        alert("Password is typed incorrectly, please try again.")
+                        denyUserCreation("Password is typed incorrectly, please try again.")
                     }
                 } else {
-                    alert("Email is typed incorrectly, please try again.")
+                    denyUserCreation("Email is typed incorrectly, please try again.")
                 }
             } 
 
@@ -70,7 +79,7 @@ export const SignUpPage = () => {
                 <input type="username" className="form-control" placeholder="Username" onChange={(e)=>setUserName(e.target.value)}/>
                 <input type="email" className="form-control" placeholder="Email" defaultValue="" onChange={(e)=>setUserEmail(e.target.value)}/>
                 <input type="password" className="form-control" placeholder="Password" defaultValue="" onChange={(e)=>setUserPassword(e.target.value)}/>
-                <input type="submit" value="Sign up"/>
+                <input className={`submit_button ${isLoading && ("disabled_button")}`} type="submit" value="Sign up" disabled={isLoading}/>
                 <Link to="/login">Log in</Link>
             </form>
         </div>

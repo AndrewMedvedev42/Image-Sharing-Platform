@@ -3,8 +3,7 @@ import { useEffect, useState } from "react"
 import {useLocation} from "react-router-dom"
 import { LoadingMessage } from "./componets/loading-message";
 import { ErrorMessage } from "./componets/error_message";
-import { NoImagesMessage } from "./componets/no_images_message";
-import FadeIn from 'react-fade-in';
+import { UnavalibleMessage } from "./componets/unavalible-message";
 
 
 export const ImagePreviewPage = () => {
@@ -72,7 +71,7 @@ export const ImagePreviewPage = () => {
                                     }
                                 })
                             }</article>
-                            ):<NoImagesMessage message="This user has no more images"/>
+                            ):<UnavalibleMessage message="This user has no more images"/>
                         } 
                                     
                     </section>

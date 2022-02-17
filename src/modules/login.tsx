@@ -6,9 +6,14 @@ import {useNavigate} from "react-router-dom";
 export const LoginInPage:React.FC = () => {
     const [userLoginEmail, setUserLoginEmail] = useState("")
     const [userLoginPassword, setUserLoginPassword] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 //USE NAVIGATE TO MOVE BETWEEN PAGES
     const history = useNavigate();
 
+    const denyUserLogin = (message:string) => {
+        alert(message)
+        setIsLoading(false)
+    }
 //SETS ROLE TO local STORAGE TO LIMIT ACCESS
     useEffect(()=>{
         window.localStorage.setItem("M0NTY3ODkw", JSON.stringify({role:"Customer"}));
@@ -20,12 +25,12 @@ export const LoginInPage:React.FC = () => {
 
 //CHECKS EXISTING ACCOUNT FOR ACCESS
     const userCheckProcces = (data:any) => {
-        const {password, userName, _id} = data.data.user
+        const {password, _id} = data.data.user
             if (userLoginPassword === password) {
                 window.localStorage.setItem("M0NTY3ODkw", JSON.stringify({role:"Customer", userID:_id}));
                 history(`/users/${_id}`)
             }else{
-                alert("Wrong password, please try again.")
+                denyUserLogin("Wrong password, please try again.")
             }
     }
  
@@ -33,6 +38,7 @@ export const LoginInPage:React.FC = () => {
 //FINDS USER INFO FOR FURTHER VALIDATION
     const getUserDataByLogin = (e:React.ChangeEvent<any>) => {
         e.preventDefault();
+        setIsLoading(true)
         if (userLoginEmail.match(mailValidation)) {
             if (userLoginPassword.match(passwordValidation)) {
                 axios
@@ -41,14 +47,13 @@ export const LoginInPage:React.FC = () => {
                         userCheckProcces(res)
                     })
                     .catch(err => {
-                        console.log(err);
-                        alert("Sorry, user was not found")
+                        denyUserLogin("Sorry, user was not found")
                     })
             }else{
-                alert("Password is typed incorrectly, please try again.")
+                denyUserLogin("Password is typed incorrectly, please try again.")
             }
         } else {
-            alert("Email is typed incorrectly, please try again.")
+            denyUserLogin("Email is typed incorrectly, please try again.")
         }
     } 
     return (
@@ -57,7 +62,7 @@ export const LoginInPage:React.FC = () => {
                 <h2>Log in</h2>
                 <input type="email" placeholder="email" className="form-control" onChange={(e)=>{setUserLoginEmail(e.target.value)}}/>
                 <input type="password" placeholder="pasword" className="form-control" onChange={(e)=>{setUserLoginPassword(e.target.value)}}/>
-                <input type="submit" value="Log in"/>
+                <input className={`submit_button ${isLoading && ("disabled_button")}`} type="submit" value="Log in"/>
                 <Link to="/signup">Create new account</Link>
             </form>
         </div>

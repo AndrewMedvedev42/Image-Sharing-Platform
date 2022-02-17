@@ -3,7 +3,7 @@ import FadeIn from 'react-fade-in';
 import { useEffect, useState } from "react"
 import { LoadingMessage } from "../componets/loading-message";
 import { ErrorMessage } from "../componets/error_message";
-import { NoImagesMessage } from "../componets/no_images_message";
+import { UnavalibleMessage } from "../componets/unavalible-message";
 
 interface ImageProps {
     author: {
@@ -50,7 +50,7 @@ export const MainPage:React.FC = () => {
                                 }    
                                 </FadeIn>     
                             </section>
-                        ):<NoImagesMessage message="No images to display"/>
+                        ):<UnavalibleMessage message="No images to display"/>
                     ):<LoadingMessage message="Loading..."/>
                 ):<ErrorMessage error_message={errorMessage}/>
             }    

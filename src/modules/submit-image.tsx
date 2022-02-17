@@ -42,7 +42,7 @@ export const SubmitImagePage = () => {
                     <input type="file" className="form-control" name="file" required disabled={isLoading}/>
                     <input type="text" className="form-control" placeholder="Title" onChange={(e)=>setImageTitle(e.target.value)} disabled={isLoading}/>
                     <input type="text" className="form-control" placeholder="Description" onChange={(e)=>setImageDescription(e.target.value)} disabled={isLoading}/>
-                    <input type="submit" value="Submit" className="btn btn-default" disabled={isLoading}/>                             
+                    <input type="submit" value="Submit" className="submit_button" disabled={isLoading}/>                             
             </form>
         </section>
     )
