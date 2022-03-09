@@ -1,15 +1,7 @@
+const emailValidation= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const passwordValidation = /^\S+$/
+
 const UserModel = require("../models/user.model")
-//GETS ALL USERS FROM DATA BASE
-// const getAllUsers = async(req,res) => {
-//     const users = User.find({})
-//     console.log(users);
-//     try {
-//         const users = await User.find({})
-//         res.status(200).json({users})
-//     } catch (error) {
-//         res.status(500).json({msg:error})
-//     }
-// }
 
 //POSTS NEW USER INTO DATA BASE
 const createUser = async(req,res) => {
@@ -22,9 +14,7 @@ const createUser = async(req,res) => {
 }
 
 //GETS USER FROM DATA BASE
-const getUser = async(req,res) => {
-    console.log(req.params);
-    
+const getUser = async(req,res) => {   
     try {
         const {id:Id} = req.params
 
@@ -39,12 +29,9 @@ const getUser = async(req,res) => {
 }
 
 const getUserByUserName = async(req,res) => {
-    console.log(req.params);
-    
     try {
-        const {id:Id} = req.params
-
-        const user = await UserModel.findOne({userName:Id})
+        const {username:userName} = req.params
+        const user = await UserModel.findOne({userName:userName})
         if(!user){
             return res.status(404).json({msg:'NO user WAS FOUND'})
         }
@@ -55,18 +42,30 @@ const getUserByUserName = async(req,res) => {
 }
 
 //GETS USER FROM DATA BASE BY EMAIL
-const getUserByEmail = async(req,res) => {
+const loginUser = async(req,res) => {
     try {
-        console.log(req.query);
-        
-        const {email} = req.query
-        const user = await UserModel.findOne({email:email})
-        if(!user){
-            return res.status(404).json({msg:'NO user WAS FOUND'})
+        const {email, password} = req.body
+        if (email.match(emailValidation)) {
+            if (password.match(passwordValidation)) {                
+                const user = await UserModel.findOne({email:email})
+                if(!user){
+                    return res.status(404).json({msg:'User not found'})
+                }
+                if (user.password === password) {
+                    delete user.password;    
+                    delete user.imageList
+                    return res.status(200).json({user})
+                } else {   
+                    return res.status(404).json({msg:"Password is incorrect, please try again."})
+                }
+            }else{
+                res.status(404).json({msg:"Password is typed incorrectly, please try again."})
+            }
+        } else {
+            res.status(404).json({msg:"Email is typed incorrectly, please try again."})
         }
-        res.status(200).json({user})
     } catch (error) {
-        res.status(500).json({msg:error})
+        res.status(404).json({msg:error})
     }
 }
 
@@ -74,14 +73,15 @@ const getUserByEmail = async(req,res) => {
 const updateUser = async(req,res) => {
     try {
         const {id:taskID} = req.params
-        const todo = await UserModel.findOneAndUpdate({_id:taskID},req.body,{
+        const user = await UserModel.findOneAndUpdate({_id:taskID},req.body,{
             new:true,
-            runValidators:true
+            runValidators:true,
+            useFindAndModify:false
         })
-        if(!todo){
+        if(!user){
             return res.status(404).json({msg:'NO todo WAS FOUND'})
         }
-        res.status(200).json({todo})
+        res.status(200).json("")
     } catch (error) {
         res.status(500).json({msg:error})
     }
@@ -106,7 +106,7 @@ module.exports = {
     getUserByUserName,
     createUser,
     getUser,
-    getUserByEmail,
+    loginUser,
     updateUser,
     deleteUser
 }

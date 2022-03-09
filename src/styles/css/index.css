@@ -105,5 +105,6 @@ input {
   color: #D25D68; }
 
 .disabled_button, .disabled_button:hover {
+  cursor: auto;
   opacity: 1;
   background-color: gray; }
