@@ -2,9 +2,9 @@ import axios from 'axios';
 import FadeIn from 'react-fade-in';
 import { useEffect, useState } from "react"
 import {Link, useLocation} from "react-router-dom";
-import { LoadingMessage } from "./componets/loading-message";
-import { ErrorMessage } from "./componets/error_message";
-import { UnavalibleMessage } from "./componets/unavalible-message";
+import { LoadingMessage } from "../componets/loading-message";
+import { ErrorMessage } from "../componets/error_message";
+import { UnavalibleMessage } from "../componets/unavalible-message";
 
 interface ImageProps {
     author: {

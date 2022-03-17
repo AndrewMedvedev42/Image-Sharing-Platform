@@ -2,14 +2,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { NavigationBar } from "./modules/componets/navigation-menu";
 
-import { KvazarLandingPage } from "./modules/landing_page";
+import { KvazarLandingPage } from "./modules/pages/landing_page";
 import { MainPage } from "./modules/main_page/main";
-import { LoginInPage } from "./modules/login";
-import { SignUpPage } from "./modules/signup";
-import { UserProfilePage } from "./modules/user-profile";
-import { SubmitImagePage } from "./modules/submit-image";
-import { ImagePreviewPage } from "./modules/image-preview";
-import { SuccesssfullUploadPage } from "./modules/successfull-upload-page";
+import { LoginInPage } from "./modules/pages/login";
+import { SignUpPage } from "./modules/pages/signup";
+import { UserProfilePage } from "./modules/pages/user-profile";
+import { SubmitImagePage } from "./modules/pages/submit-image";
+import { ImagePreviewPage } from "./modules/pages/image-preview";
+import { SuccesssfullUploadPage } from "./modules/pages/successfull-upload-page";
 
 function App() {
   return (

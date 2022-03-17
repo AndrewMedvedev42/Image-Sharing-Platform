@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from "react"
 import {useLocation} from "react-router-dom"
-import { LoadingMessage } from "./componets/loading-message";
-import { ErrorMessage } from "./componets/error_message";
-import { UnavalibleMessage } from "./componets/unavalible-message";
+import { LoadingMessage } from "../componets/loading-message";
+import { ErrorMessage } from "../componets/error_message";
+import { UnavalibleMessage } from "../componets/unavalible-message";
 
 
 export const ImagePreviewPage = () => {
