@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom"
-import { LoadingMessage } from "./componets/loading-message";
+import { LoadingMessage } from "../componets/loading-message";
 
 export const SubmitImagePage = () => {
     const [imageTitle, setImageTitle] = useState("")
