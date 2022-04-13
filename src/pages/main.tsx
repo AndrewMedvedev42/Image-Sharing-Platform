@@ -1,6 +1,9 @@
-import axios from 'axios';
 import FadeIn from 'react-fade-in';
 import { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux";
+
+import getImages from "../redux/actions/getImages";
+
 import { LoadingMessage } from "../componets/loading-message";
 import { ErrorMessage } from "../componets/error_message";
 import { UnavalibleMessage } from "../componets/unavalible-message";
@@ -17,19 +20,19 @@ interface ImageProps {
     title:String,
     _id:String
   }
-  
+
+interface RootState {
+    imageList:ImageProps[],
+    errorMessage:object
+}
+
 
 export const MainPage:React.FC = () => {
-    const [imageList, setImageList] = useState([])
-    const [errorMessage, setErrorMessage] = useState()
+    const dispatch = useDispatch()
+    const {imageList, errorMessage} = useSelector((state:RootState) => state)
     useEffect(()=>{
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/images`)
-            .then(res => setImageList(res.data.images))
-            .catch(err=>setErrorMessage(err))
+        dispatch(getImages())
     },[])
-
-    console.log(imageList);
-    
 
     return (
         <section className="main_page_section">
@@ -39,8 +42,8 @@ export const MainPage:React.FC = () => {
                             <section className="image_list_section wide_image_list_section"> 
                                 <FadeIn>    
                                 {
-                                    imageList.map(item=>{
-                                        const {title, author, _id, image}:ImageProps = item
+                                    imageList.map((item:ImageProps)=>{
+                                        const {author, _id, image} = item
                                         return (
                                             <a className="image_item" href={`/images/${author.userName}/${_id}`}>
                                                 <img className="image" src={image}/>

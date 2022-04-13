@@ -10,9 +10,7 @@ export const LoginInPage:React.FC = () => {
     const history = useNavigate();
 
     const denyUserLogin = (message:any) => {
-        alert(message)
-        console.log(message);
-        
+        alert(message)        
         setIsLoading(false)
     }
 //SETS ROLE TO local STORAGE TO LIMIT ACCESS

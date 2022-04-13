@@ -40,9 +40,6 @@ export const ImagePreviewPage = () => {
             .then(res=>setImageList(res.data.user.imageList))
             .catch(err=> setErrorMessage(err));
     },[userName])
-
-    console.log(image);
-    
     return (
             <>
             {!errorMessage ? (
