@@ -22,9 +22,6 @@ export const KvazarLandingPage:React.FC = () => {
                 <h2 className="section_title">About</h2>
                 <p className="description">Self hosted image/screenshot sharing application project written with React</p>
                 <p className="description">Web application for ability to uplaod images and display them on the screen and store them into data base.</p>
-                {/* <section className="future_updates_section">
-                    <h4 style={{fontWeight:700}}>Future updates</h4>
-                </section> */}
             </article>
             <section className="center_text technology_section">
                 <h2 className="section_title">Technologies used</h2>

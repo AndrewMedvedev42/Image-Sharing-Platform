@@ -2,11 +2,11 @@ import FadeIn from 'react-fade-in';
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 
-import getImages from "../redux/actions/getImages";
+import getImages from "../../redux/actions/getImages";
 
-import { LoadingMessage } from "../componets/loading-message";
-import { ErrorMessage } from "../componets/error_message";
-import { UnavalibleMessage } from "../componets/unavalible-message";
+import { LoadingMessage } from "../../componets/loadingMessage";
+import { ErrorMessage } from "../../componets/errorMessage";
+import { UnavalibleMessage } from "../../componets/unavalibleMessage";
 
 interface ImageProps {
     author: {
@@ -23,7 +23,10 @@ interface ImageProps {
 
 interface RootState {
     imageList:ImageProps[],
-    errorMessage:object
+    image:{}
+    errorMessage:{
+        status:number
+    }
 }
 
 
@@ -36,7 +39,7 @@ export const MainPage:React.FC = () => {
 
     return (
         <section className="main_page_section">
-            {!errorMessage ? (
+            {!errorMessage.status ? (
                     imageList.length ? (
                         imageList[0] ? (
                             <section className="image_list_section wide_image_list_section"> 

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const getImages = () => async (dispatch:Dispatch) => {
     try {
-        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/ima`)         
+        const {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/images`)         
         dispatch({
             type:"GET_IMAGES",
             payload:{
