@@ -15,12 +15,6 @@
   .user_page_section .user_details .gallery_length {
     font-weight: 700;
     font-size: 1.5rem; }
-  .user_page_section .user_details .orange_button {
-    background-color: orange; }
-  .user_page_section .user_details .inactive_button {
-    background-color: gray; }
-  .user_page_section .user_details .inactive_button:hover {
-    opacity: 1; }
 
 .user_page_section .upload_section {
   margin-bottom: 1rem; }

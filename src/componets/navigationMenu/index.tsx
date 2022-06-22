@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { FaUserAlt } from "react-icons/fa";
-import {Link} from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
@@ -35,11 +34,12 @@ export const NavigationBar:React.FC = () => {
                     <img src={`${process.env.PUBLIC_URL}/media/Kvazar_logo.svg`} alt="kvazar-logo"/>
                     <span className="website-name">Kvazar</span>
                 </div>
-                <Link to="/about" className="text_link">About</Link>
             </Navbar.Brand>
                 {
                     !isUserLogedIn ? (
-                        <Nav.Link href="/login">Log in</Nav.Link>
+                        <Nav.Link href="/login">
+                            <button type="submit" className='btn btn-outline-primary'>Log in</button>
+                        </Nav.Link>
                     ):(
                         <Nav className="nav_container">
                             <NavDropdown title={navDropdownTitle} id="basic-nav-dropdown">

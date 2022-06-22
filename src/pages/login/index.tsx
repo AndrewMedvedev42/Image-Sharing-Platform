@@ -51,7 +51,7 @@ export const LoginInPage:React.FC = () => {
                 <h2>Log in</h2>
                 <input name="email" type="email" placeholder="email" className="form-control"/>
                 <input name="password" type="password" placeholder="pasword" className="form-control" onChange={(e)=>{setUserLoginPassword(e.target.value)}}/>
-                <input className={`submit_button ${isLoading && ("disabled_button")}`} type="submit" value="Log in"/>
+                <button type="submit" className='w-100 mb-3 btn btn-primary' disabled={isLoading}>Log In</button>
                 <Link to="/signup">Create new account</Link>
             </form>
         </div>

@@ -113,11 +113,18 @@ export const UserProfilePage = () => {
                                     <p className="gallery_length">Total submitions: {imageListLength(userData["imageList"])}</p>
                                     {
                                         userRole.userID === userData["_id"] && (
-                                            <input className={`submit_button orange_button ${isLoading && "inactive_button"}`} type="submit" value={
-                                                !isLoading ? (
-                                                    !userData["privateAccount"] ? ("Become private account")
-                                                    :"Become a public account") 
-                                                        : "Changing status..."} onClick={()=>updateUserStatus(userData["_id"], userData["privateAccount"])} disabled={isLoading}/>
+                                            <button 
+                                                onClick={()=>updateUserStatus(userData["_id"], userData["privateAccount"])}
+                                                type="submit" 
+                                                className='w-100 mb-3 btn btn-warning' 
+                                                disabled={isLoading}>
+                                                {
+                                                    !isLoading ? (
+                                                        !userData["privateAccount"] ? ("Become private account")
+                                                        :"Become a public account") 
+                                                            : "Changing status..."
+                                                }
+                                            </button>
                                         )
                                     }
                                 </article>
@@ -126,7 +133,7 @@ export const UserProfilePage = () => {
                                         userRole.userID === userData["_id"] && (
                                             <div>
                                                 <Link to={`/users/${userData["_id"]}/submit-image`}>
-                                                    <input className="submit_button" type="submit" value="Upload an image"/>
+                                                    <button type="submit" className='w-100 mb-3 btn btn-primary' disabled={isLoading}>Upload an image</button>
                                                 </Link>
                                             </div>
                                         )

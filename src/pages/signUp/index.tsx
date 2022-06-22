@@ -79,7 +79,7 @@ export const SignUpPage = () => {
                 <input type="username" className="form-control" placeholder="Username" onChange={(e)=>setUserName(e.target.value)}/>
                 <input type="email" className="form-control" placeholder="Email" defaultValue="" onChange={(e)=>setUserEmail(e.target.value)}/>
                 <input type="password" className="form-control" placeholder="Password" defaultValue="" onChange={(e)=>setUserPassword(e.target.value)}/>
-                <input className={`submit_button ${isLoading && ("disabled_button")}`} type="submit" value="Sign up" disabled={isLoading}/>
+                <button type="submit" className='w-100 mb-3 btn btn-primary' disabled={isLoading}>Sign Up</button>
                 <Link to="/login">Log in</Link>
             </form>
         </div>
