@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom"
-import { LoadingMessage } from "./componets/loading-message";
+import { LoadingMessage } from "../../componets/loadingMessage";
 
 export const SubmitImagePage = () => {
     const [imageTitle, setImageTitle] = useState("")
@@ -42,7 +42,7 @@ export const SubmitImagePage = () => {
                     <input type="file" className="form-control" name="file" required disabled={isLoading}/>
                     <input type="text" className="form-control" placeholder="Title" onChange={(e)=>setImageTitle(e.target.value)} disabled={isLoading}/>
                     <input type="text" className="form-control" placeholder="Description" onChange={(e)=>setImageDescription(e.target.value)} disabled={isLoading}/>
-                    <input type="submit" value="Submit" className="submit_button" disabled={isLoading}/>                             
+                    <button type="submit" className='w-100 mb-3 btn btn-primary' disabled={isLoading}>Submit</button>                           
             </form>
         </section>
     )

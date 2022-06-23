@@ -30,26 +30,51 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  @media only screen and (max-width: 600px) {
+    .user-form {
+      width: 100%; } }
 
 input {
   margin-bottom: 1rem; }
 
-.submit_button {
-  transition: .5s;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 2rem;
-  width: 100%;
+.btn {
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 25px; }
+
+.btn-primary {
+  border: #5dd2c7 1px solid;
   background-color: #5dd2c7; }
 
-.submit_button:hover {
-  opacity: .75; }
+.btn-primary:hover {
+  border: #56c5ba 1px solid;
+  background-color: #56c5ba; }
+
+.btn-primary:focus, .btn-primary:active {
+  border: #4cafa5 1px solid;
+  background-color: #4cafa5; }
+
+.btn-primary:disabled {
+  border: #5cd1c5 1px solid;
+  background-color: #5cd1c5; }
+
+.btn-outline-primary {
+  border: #5dd2c7 1px solid;
+  color: #5dd2c7; }
+
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+  border: #56c5ba 1px solid;
+  background-color: #56c5ba; }
+
+.btn-primary:disabled {
+  border: #5cd1c5 1px solid;
+  background-color: #5cd1c5; }
 
 .image_list_section .image_item {
   transition: .5s;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 10px;
   display: inline-block;
   margin-bottom: .75rem; }
   .image_list_section .image_item .image {
@@ -103,8 +128,3 @@ input {
 
 .text_link {
   color: #D25D68; }
-
-.disabled_button, .disabled_button:hover {
-  cursor: auto;
-  opacity: 1;
-  background-color: gray; }

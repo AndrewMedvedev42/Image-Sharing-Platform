@@ -8,7 +8,7 @@ export const SuccesssfullUploadPage = () => {
             <div className="message-box">
                 <BsCheckCircleFill className="checked_icon" size={100}/>
                 <p className="message_text">Successfully uploaded!</p>
-                <input type="submit" value="Back" onClick={()=>{history(-2)}}/>
+                <button type="submit" className='w-100 mb-3 btn btn-primary' onClick={()=>{history(-2)}}>Back</button>   
             </div>
         </section>
     )
